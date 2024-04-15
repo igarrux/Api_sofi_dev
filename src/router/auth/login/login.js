@@ -4,7 +4,7 @@ import { getJWT } from './get-jwt/get-jwt.js'
 import { cookieConfig } from './config.js'
 const router = express.Router()
 
-router.get('/login', async (req, res) => {
+router.post('/login', async (req, res) => {
 	const userId = await userIsValid(req.body)
 	if (!userId) return res.status(401).cookie('session', '').send()
 
