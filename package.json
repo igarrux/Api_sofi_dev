@@ -12,6 +12,9 @@
         "name": "Jhon Jairo Guerrero Sanchez",
         "email": "garruxx@gmail.com"
     },
+    "scripts": {
+        "dev": "nodemon src/main.mjs"
+    },
     "license": "MIT",
     "dependencies": {
         "express": "^4.19.2",
