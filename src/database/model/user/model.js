@@ -1,0 +1,11 @@
+import { model, Schema } from 'mongoose'
+import { defineName } from './definitions/name.js'
+import { defineEmail } from './definitions/email.js'
+import { definePassword } from './definitions/password.js'
+
+const userSchema = new Schema({
+	name: defineName,
+	email: defineEmail,
+	password: definePassword,
+})
+export const User = model('users', userSchema)
