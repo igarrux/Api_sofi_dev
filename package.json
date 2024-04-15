@@ -2,7 +2,7 @@
     "name": "api-sofi",
     "version": "0.0.0",
     "description": "Una api rest para consumir en el front.",
-    "main": "src/main.mjs",
+    "main": "src/main.js",
     "type": "module",
     "keywords": [
         "Api rest",
