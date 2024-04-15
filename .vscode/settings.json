@@ -1,0 +1,7 @@
+{
+  "files.exclude": {
+    "desktop-ini": true,
+    ".vscode": true,
+    "desktop.ini": true
+  }
+}
