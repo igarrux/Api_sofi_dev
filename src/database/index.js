@@ -1,6 +1,4 @@
-import { config } from 'dotenv'
 import { connect } from 'mongoose'
-config()
 
 export const connectDB = async () => {
 	try {
