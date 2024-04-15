@@ -1,4 +1,5 @@
 import { connect } from 'mongoose'
+export * from './model/user/index.js'
 
 export const connectDB = async () => {
 	try {
