@@ -8,5 +8,5 @@ export const Login = async (req, res) => {
 
 	const jwt = getJWT(userId)
 	res.cookie('session', jwt, cookieConfig)
-	res.status(200).send()
+	res.status(204).send()
 }
