@@ -1,6 +1,5 @@
 import express from 'express'
-import { validateCredentials } from './validations/validate-credentials.js'
-import { getJWT } from './get-jwt/get-jwt.js'
+import { getJWT, validateCredentials } from './utils/index.js'
 import { cookieConfig } from './config.js'
 const router = express.Router()
 
