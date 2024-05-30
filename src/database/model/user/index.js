@@ -8,7 +8,7 @@ const userSchema = new Schema({
 	name: defineName,
 	email: defineEmail,
 	password: definePassword,
-	_id: String
+	id: String
 })
 userSchema.pre('save', hastPassword)
 export const User = model('users', userSchema)
