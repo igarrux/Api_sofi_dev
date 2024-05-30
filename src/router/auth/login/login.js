@@ -2,7 +2,6 @@ import { getJWT, validateCredentials } from './utils/index.js'
 import { cookieConfig } from './config.js'
 
 export const Login = async (req, res) => {
-	console.log('helo');
 	if (!req.body) return res.status(400).send()
 	const userId = await validateCredentials(req.body)
 	if (!userId) return res.status(401).cookie('session', '').send()
