@@ -1,4 +1,4 @@
-import { errors } from './error_messages/error.messages.js'
+import { errors } from './messages/errors.js'
 export const Password = {
 	type: String,
 	required: [true, errors.passwordEmpty],
