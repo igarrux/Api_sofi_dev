@@ -1,5 +1,5 @@
 import { errors } from '../error_messages/error.messages.js'
-export const definePassword = {
+export const Password = {
 	type: String,
 	required: [true, errors.passwordEmpty],
 	validate: {

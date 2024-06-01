@@ -4,7 +4,7 @@ const validate = {
 	message: errors.invalidEmail,
 }
 
-export const defineEmail = {
+export const Email = {
 	unique: true,
 	type: String,
 	required: [true, errors.emailEmpty],

@@ -1,13 +1,13 @@
 import { model, Schema } from 'mongoose'
-import { defineName } from './definitions/name.js'
-import { defineEmail } from './definitions/email.js'
-import { definePassword } from './definitions/password.js'
+import { Name } from './type_definitions/name.js'
+import { Email } from './type_definitions/email.js'
+import { Password } from './type_definitions/password.js'
 import { hastPassword } from './parsers/password.js'
 
 const userSchema = new Schema({
-	name: defineName,
-	email: defineEmail,
-	password: definePassword,
+	name: Name,
+	email: Email,
+	password: Password,
 	id: String
 })
 userSchema.pre('save', hastPassword)
