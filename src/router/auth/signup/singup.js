@@ -1,5 +1,6 @@
 import { User } from '../../../database/index.js'
 import { errors } from './errors_messages/error.messages.js'
+import { errorsMapper } from './mappers/errors.mapper.js'
 
 export const SingUp = async (req, res) => {
 	if (!req.body) return res.status(400).send(errors.bodyEmpty)
@@ -9,7 +10,10 @@ export const SingUp = async (req, res) => {
 		await user.save()
 	} catch (error) {
 		if (error.code === 11000) res.status(409).send(errors.emailDiplicated)
-		if (error.name === 'ValidationError') res.status(400).send(error.errors)
+		if (error.name === 'ValidationError') {
+			res.status(400).send(errorsMapper(error.errors))
+			return
+		}
 		if (error && error.name != 'ValidationError' && error.code != 11000) {
 			res.status(500).send(errors.interlSeverError)
 		}
