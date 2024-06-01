@@ -18,7 +18,7 @@ El objetivo de esta API es hasta el momento permitir las siguientes cosas:
 #### Login
 *Inicio de sesión* `/auth/login`
 
-```json
+```jsonc
 {
     "email": "string", 
     "password": "string"
@@ -36,7 +36,7 @@ Respuestas
 
 *Registro de usuairo* `/auth/signup`
 
-```json
+```jsonc
 {
     "name": "string", // No puede estar vacío
     "email": "string", // Debe de ser un formato de email valido
@@ -57,7 +57,7 @@ Respuestas
 
 **Importante ⚠️**
 Los errores con código 400 se devuelven en un objeto similar a este:
-```json
+```jsonc
 [
     {
         "path": "password",
