@@ -15,7 +15,7 @@ El objetivo de esta API es hasta el momento permitir las siguientes cosas:
 
 ### Autenticación
 
-#### Login
+### Login
 *Inicio de sesión* `/auth/login`
 
 ```jsonc
@@ -32,7 +32,7 @@ Respuestas
 | Ok    | Inicio de sesión conseguido | 204 (No Content)   |         |
 
 
-#### Singup
+### Singup
 
 *Registro de usuairo* `/auth/signup`
 
@@ -69,7 +69,8 @@ Los errores con código 400 se devuelven en un objeto similar a este:
     }
 ]
 ```
-#### logout
+
+### logout
 
 *Cierre de sesión* `/auth/logout`
 No requiere cuerpo, no devuelve errores
