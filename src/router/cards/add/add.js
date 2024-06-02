@@ -2,7 +2,8 @@ import { Card } from '../../../database/model/cards/index.js'
 import { errorsMapper } from '../../utils/mappers/errors.mapper.js'
 
 export const AddCard = (req, res) => {
-	const card = new Card(req.body)
+	const cardData = { ...req.body, owner: req.user_id }
+	const card = new Card(cardData)
 	try {
 		card.save()
 	} catch (error) {
