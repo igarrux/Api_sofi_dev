@@ -1,5 +1,5 @@
-import { errors } from "./messages/errors.js"
+import { ERRORS } from './messages/errors.js'
 export const Name = {
 	type: String,
-	required: [true, errors.nameTooShort],
+	required: [true, ERRORS.NAME_TOO_SHORT],
 }

@@ -1,10 +1,10 @@
-import { errors } from './messages/errors.js'
+import { ERRORS } from './messages/errors.js'
 export const Password = {
 	type: String,
-	required: [true, errors.passwordEmpty],
+	required: [true, ERRORS.PASSWORD_EMPTY],
 	validate: {
 		validator: (text) => text.length >= 8,
-		message: errors.passwordTooShort,
+		message: ERRORS.PASSWORD_TO_SHORT,
 	},
-	min: [8, errors.passwordTooShort],
+	min: [8, ERRORS.PASSWORD_TO_SHORT],
 }

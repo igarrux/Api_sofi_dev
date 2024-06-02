@@ -1,7 +1,7 @@
-export const errors = {
-	passwordTooShort: 'La contraseña debe de tener minimo 8 carácteres',
-	invalidEmail: 'El correo no es valido',
-	nameTooShort: 'El nombre es demasiado corto',
-	emailEmpty: 'El correo no es valido',
-	passwordEmpty: 'La contraseña no puede estar vacía',
+export const ERRORS = {
+	PASSWORD_TO_SHORT: 'La contraseña debe de tener minimo 8 carácteres',
+	INVALID_EMAIL: 'El correo no es valido',
+	NAME_TOO_SHORT: 'El nombre es demasiado corto',
+	EMAIL_EMPTY: 'El correo no es valido',
+	PASSWORD_EMPTY: 'La contraseña no puede estar vacía',
 }
