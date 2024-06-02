@@ -1,9 +1,10 @@
 import { model, Schema, ObjectId  } from 'mongoose'
+import { Thumbnail } from './type_definitions/thumbnail.js'
 
 const cardSchema = new Schema({
 	thumbnail: Thumbnail,
-	title: Email,
-	description: Description,
+	title: String,
+	description: String,
 	repository_link: String,
 	demo_link: String,
 	owner: ObjectId,
