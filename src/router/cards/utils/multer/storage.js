@@ -5,11 +5,11 @@ import { ERRORS } from './messages/error.js'
 import { mkdirIfNotExist } from './mkdir_If_not_exist.js'
 
 const destination = async (req, _, cb) => {
-	if (!req.body.user_id) {
+	if (!req.user_id) {
 		cb(new MulterError(400, ERRORS.USER_ID_REQUIRED))
 	}
 
-	const dist = `public/${req.body.user_id}/images/`
+	const dist = `public/${req.user_id}/images/`
 	const error = await mkdirIfNotExist(dist)
 
 	if (error) return cb(new MulterError(500, ERRORS.DEST_PROBLEM))
