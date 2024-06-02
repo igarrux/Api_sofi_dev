@@ -17,7 +17,7 @@ const destination = async (req, _, cb) => {
 }
 
 const filename = (req, file, cb) => {
-	req.body._id = new Types.ObjectId()
+	req.body._id = req.body._id ?? new Types.ObjectId()
 	const EXT = extname(file.originalname)
 	const FILE_NAME = req.body._id.toString() + EXT
 
