@@ -20,17 +20,18 @@ const destination = async (req, _, cb) => {
 const filename = (req, file, cb) => {
 	try {
 		//Require or add the _id
-		req.body._id = req.body._id ?? new Types.ObjectId()
+		const id = req.method == 'PATCH' ? req.params.id : new Types.ObjectId()
+		req.body._id = id
 		//Get the name
 		const EXT = extname(file.originalname)
-		const FILE_NAME = req.body._id.toString() + EXT
-        
+		const FILE_NAME = id.toString() + EXT
+
 		//Remove prev images
-		deleteSync(`public/${req.user_id}/images/${req.body._id}.*`)
+		deleteSync(`public/${req.user_id}/images/${id}.*`)
 
 		// Add the name of the image in the database
 		req.body.thumbnail = FILE_NAME
-		
+
 		cb(null, FILE_NAME)
 	} catch (error) {
 		cb(new MulterError(ERRORS.UPLOAD_GENERAL_ERROR))
