@@ -1,5 +1,5 @@
 import { Card } from '../../../database/model/cards/index.js'
-import { errorsMapper } from '../../utils/mappers/errors.mapper.js'
+import { dbHttpError } from '../../utils/mappers/db_http_errors.mapper.js'
 
 export const AddCard = async (req, res) => {
 	try {
@@ -9,8 +9,7 @@ export const AddCard = async (req, res) => {
 		res.status(201).send()
 	} catch (error) {
 		if (error.name === 'ValidationError') {
-			res.status(400).send(errorsMapper(error.errors))
-			return
+			return dbHttpError(error.errors, 400)(res)
 		}
 		res.status(500).send()
 		return

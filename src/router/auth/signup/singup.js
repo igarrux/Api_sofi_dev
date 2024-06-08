@@ -1,6 +1,6 @@
 import { User } from '../../../database/index.js'
 import { ERRORS } from './errors_messages/error.messages.js'
-import { errorsMapper } from '../../utils/mappers/errors.mapper.js'
+import { dbHttpError } from '../../utils/mappers/db_http_errors.mapper.js'
 import { httpError } from '../../cards/utils/mappers/http_errors.js'
 
 export const SingUp = async (req, res) => {
@@ -9,18 +9,17 @@ export const SingUp = async (req, res) => {
 
 	try {
 		await user.save()
-	} catch (error) {
+	} catch ({ code, name, keyPattern, errors }) {
 		//Duplicated errors
-		if (error.code === 11000 && error.keyPattern.email) {
-			httpError(409, ERRORS.EMAIL_DIPLICATED, 'email')(res)
+		if (code === 11000 && keyPattern.email) {
+			return httpError(409, ERRORS.EMAIL_DIPLICATED, 'email')(res)
 		}
-		if (error.code === 11000 && error.keyPattern.user_name) {
-			httpError(409, ERRORS.USER_NAME_DUPLICATED, 'user_name')(res)
+		if (code === 11000 && keyPattern.user_name) {
+			return httpError(409, ERRORS.USER_NAME_DUPLICATED, 'user_name')(res)
 		}
-		if (error.name === 'ValidationError') {
-			res.status(400).send(errorsMapper(error.errors))
-		}
-		if (error && error.name != 'ValidationError' && error.code != 11000) {
+		if (name === 'ValidationError') return dbHttpError(errors, 400)(res)
+
+		if (name != 'ValidationError' && code != 11000) {
 			res.status(500).send(ERRORS.INTERVAL_ERROR)
 		}
 		return

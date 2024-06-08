@@ -1,7 +1,7 @@
 import { isObjectIdOrHexString } from 'mongoose'
 import { Card } from '../../../database/model/cards/index.js'
-import { errorsMapper } from '../../utils/mappers/errors.mapper.js'
 import { upload } from '../utils/multer/upload.js'
+import { dbHttpError } from '../../utils/mappers/db_http_errors.mapper.js'
 
 export const ModifyCard = async (req, res, next) => {
 	const { id } = req.params
@@ -17,7 +17,7 @@ export const ModifyCard = async (req, res, next) => {
 		})
 	} catch (error) {
 		if (error.name === 'ValidationError') {
-			res.status(400).send(errorsMapper(error.errors))
+			dbHttpError(error.errors, 400)(res)
 			return
 		}
 		res.status(500).send()
