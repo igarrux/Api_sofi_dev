@@ -1,9 +1,9 @@
 import { User } from '../../../database/index.js'
-import { errors } from './errors_messages/error.messages.js'
+import { ERRORS } from './errors_messages/error.messages.js'
 import { errorsMapper } from '../../utils/mappers/errors.mapper.js'
 
 export const SingUp = async (req, res) => {
-	if (!req.body) return res.status(400).send(errors.bodyEmpty)
+	if (!req.body) return res.status(400).send(ERRORS.BODY_EMPTY)
 	const user = new User(req.body)
 
 	try {
@@ -12,8 +12,9 @@ export const SingUp = async (req, res) => {
 		//Duplicated errors
 		if (error.code === 11000) {
 			const isEmailDiplicated = !!error.keyPattern.email
-			let errorMsg = errors.emailDiplicated
-			if (!isEmailDiplicated) errorMsg = errors.usernameDiplicated
+			let errorMsg = ERRORS.EMAIL_DIPLICATED
+			if (!isEmailDiplicated) errorMsg = ERRORS.USER_NAME_DUPLICATED
+			console.log(errorMsg)
 			res.status(409).send(errorMsg)
 			return
 		}
@@ -23,7 +24,7 @@ export const SingUp = async (req, res) => {
 			return
 		}
 		if (error && error.name != 'ValidationError' && error.code != 11000) {
-			res.status(500).send(errors.interlSeverError)
+			res.status(500).send(ERRORS.INTERVAL_ERROR)
 		}
 		return
 	}
