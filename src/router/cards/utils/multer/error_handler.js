@@ -8,5 +8,5 @@ export const multerErrorHandler = (err, _, res, next) => {
 		}
 		return res.status(err.code).send(err.field)
 	}
-	next()
+	next && next()
 }
