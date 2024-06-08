@@ -9,7 +9,15 @@ export const SingUp = async (req, res) => {
 	try {
 		await user.save()
 	} catch (error) {
-		if (error.code === 11000) res.status(409).send(errors.emailDiplicated)
+		//Duplicated errors
+		if (error.code === 11000) {
+			const isEmailDiplicated = !!error.keyPattern.email
+			let errorMsg = errors.emailDiplicated
+			if (!isEmailDiplicated) errorMsg = errors.usernameDiplicated
+			res.status(409).send(errorMsg)
+			return
+		}
+
 		if (error.name === 'ValidationError') {
 			res.status(400).send(errorsMapper(error.errors))
 			return
