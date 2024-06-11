@@ -1,7 +1,7 @@
 import { User } from '../../../database/index.js'
 import { ERRORS } from './errors_messages/error.messages.js'
 import { dbHttpError } from '../../utils/mappers/db_http_errors.mapper.js'
-import { httpError } from '../../cards/utils/mappers/http_errors.js'
+import { httpError } from '../../utils/mappers/http_errors.js'
 
 export const SingUp = async (req, res) => {
 	if (!req.body) return res.status(400).send(ERRORS.BODY_EMPTY)
