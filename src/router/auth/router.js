@@ -8,6 +8,6 @@ const router = Router()
 
 router.post('/login', Login)
 router.post('/singup', SingUp)
-router.post('/logout', Logout)
+router.get('/logout', Logout)
 router.get('/user-info', guard, GetUserInfo)
 export { router as authRouter }
