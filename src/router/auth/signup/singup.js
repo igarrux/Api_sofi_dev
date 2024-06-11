@@ -2,6 +2,7 @@ import { User } from '../../../database/index.js'
 import { ERRORS } from './errors_messages/error.messages.js'
 import { dbHttpError } from '../../utils/mappers/db_http_errors.mapper.js'
 import { httpError } from '../../utils/mappers/http_errors.js'
+import { logger } from '../../../logger.js'
 
 export const SingUp = async (req, res) => {
 	if (!req.body) return res.status(400).send(ERRORS.BODY_EMPTY)
@@ -9,7 +10,8 @@ export const SingUp = async (req, res) => {
 
 	try {
 		await user.save()
-	} catch ({ code, name, keyPattern, errors }) {
+	} catch (error) {
+		const { code, name, keyPattern, errors } = error
 		//Duplicated errors
 		if (code === 11000 && keyPattern.email) {
 			return httpError(409, ERRORS.EMAIL_DIPLICATED, 'email')(res)
@@ -22,6 +24,7 @@ export const SingUp = async (req, res) => {
 		if (name != 'ValidationError' && code != 11000) {
 			res.status(500).send(ERRORS.INTERVAL_ERROR)
 		}
+		logger.Error(error)
 		return
 	}
 	res.status(201).send()

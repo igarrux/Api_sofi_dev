@@ -4,6 +4,7 @@ import { extname } from 'path'
 import { ERRORS } from './messages/error.js'
 import { mkdirIfNotExist } from './mkdir_If_not_exist.js'
 import { deleteSync } from 'del'
+import { logger } from '../../../../logger.js'
 
 const destination = async (req, _, cb) => {
 	if (!req.user_id) {
@@ -18,7 +19,6 @@ const destination = async (req, _, cb) => {
 }
 
 const filename = (req, file, cb) => {
-
 	try {
 		//Require or add the _id
 		const id = req.method == 'PATCH' ? req.params.id : new Types.ObjectId()
@@ -35,6 +35,7 @@ const filename = (req, file, cb) => {
 
 		cb(null, FILE_NAME)
 	} catch (error) {
+		logger.Error(error)
 		cb(new MulterError(500, ERRORS.UPLOAD_GENERAL_ERROR))
 	}
 }

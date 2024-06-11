@@ -4,6 +4,7 @@ import { dbHttpError } from '../../utils/mappers/db_http_errors.mapper.js'
 import { UploadPromise } from '../utils/multer/upload_prommise.js'
 import { MulterError } from 'multer'
 import { multerErrorHandler } from '../utils/multer/error_handler.js'
+import { logger } from '../../../logger.js'
 
 export const ModifyCard = async (req, res) => {
 	const { id } = req.params
@@ -28,7 +29,7 @@ export const ModifyCard = async (req, res) => {
 		if (error instanceof MulterError) {
 			return multerErrorHandler(error, null, res)
 		}
-
+		logger.Error(error)
 		res.status(500).send()
 	}
 }
