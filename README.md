@@ -227,7 +227,7 @@ Esta acción enviará un correo electrónico a la persona que llene el formulari
 
 <aside>
 💡 El usuario propietario del sitio, probablemente tú que lees esto, recibirá un correo de info@sofi.igarrux.com, con los detalles del correo del usuario.
-
+ 
 </aside>
 
 ### El servidor realizará las siguientes validaciones:
