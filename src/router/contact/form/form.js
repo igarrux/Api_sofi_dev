@@ -6,7 +6,7 @@ export const ContactForm = async (req, res) => {
 	try {
 		const isBodyValid = ValidateContactForm(req, res)
 		if (isBodyValid != true) return
-		contactSendEmail(req, res).catch(console.log)
+		await contactSendEmail(req, res)
 		res.status(204).send()
 	} catch (error) {
 		logger.Error(error)
