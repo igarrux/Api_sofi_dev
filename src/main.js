@@ -8,6 +8,9 @@ const port = process.env.PORT || 3000
 config()
 connectDB()
 
+if(!process.env.COOKIE_SECRET || !process.env.JWT_SECRET
+) throw new Error('Missing enviroment variables')
+
 app.use(express.json())
 app.use(cookieParser(process.env.COOKIE_SECRET))
 app.use('/', router)
