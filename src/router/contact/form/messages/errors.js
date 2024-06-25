@@ -9,4 +9,5 @@ export const ERRORS = {
 	SUBJECT_TOO_SHORT: 'El asunto es muy corto, minimo 4 carácteres',
 	USER_ID_EMPTY: 'El id del usuario no puede estar vacío',
 	USER_ID_INVALID: 'El id del usuario no es válido',
+	MAILER_ERROR: 'hubo un problema al enviar el correo',
 }
