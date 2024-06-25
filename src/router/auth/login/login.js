@@ -1,5 +1,5 @@
 import { getJWT, validateCredentials } from './utils/index.js'
-import { cookieConfig } from './config.js'
+import { cookieConfig } from './cookie-config.js'
 import { logger } from '../../../logger.js'
 
 export const Login = async (req, res) => {
