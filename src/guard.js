@@ -4,7 +4,7 @@ config()
 
 export const guard = (req, res, next) => {
 	try {
-		const session = req?.cookies?.session
+		const session = req?.signedCookies?.session
 		if (!session) res.status(401).send()
 		const auth = jwt.verify(session, process.env.JWT_SECRET)
 		if (auth.id) {
