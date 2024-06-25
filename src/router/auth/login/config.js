@@ -3,4 +3,5 @@ export const cookieConfig = {
 	httpOnly: true,
 	secure: isCookieSecure,
 	sameSite: 'none',
+	signed: true,
 }
