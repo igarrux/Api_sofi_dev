@@ -16,7 +16,7 @@ export const updateUser = async (req, res) => {
 		const verification = await Verifications.findOne({ user_name })
 		if ((await verifyCode(body.code, verification, res)) != true) return
 		const { _id, ...updateData } = body
-		await User.updateOne({ user_name }, updateData)
+		await User.updateOne({ user_name }, updateData, { runValidators: true })
 		req.saveIMG()
 	} catch (error) {
 		const { code, name, keyPattern, errors } = error
