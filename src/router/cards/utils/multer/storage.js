@@ -1,8 +1,8 @@
 import { Types } from 'mongoose'
 import { diskStorage, MulterError } from 'multer'
 import { extname } from 'path'
-import { ERRORS } from './messages/error.js'
-import { mkdirIfNotExist } from './mkdir_If_not_exist.js'
+import { ERRORS } from '../../../utils/multer/messages/error.js'
+import { mkdirIfNotExist } from '../../../utils/mkdir/mkdir_If_not_exist.js'
 import { deleteSync } from 'del'
 import { logger } from '../../../../logger.js'
 

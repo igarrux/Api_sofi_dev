@@ -3,7 +3,7 @@ import { Card } from '../../../database/model/cards/index.js'
 import { dbHttpError } from '../../utils/mappers/db_http_errors.mapper.js'
 import { UploadPromise } from '../utils/multer/upload_prommise.js'
 import { MulterError } from 'multer'
-import { multerErrorHandler } from '../utils/multer/error_handler.js'
+import { multerErrorHandler } from '../../utils/multer/error_handler.js'
 import { logger } from '../../../logger.js'
 
 export const ModifyCard = async (req, res) => {

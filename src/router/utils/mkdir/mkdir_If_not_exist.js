@@ -1,6 +1,6 @@
 import { mkdir } from 'fs/promises'
 import { existsSync } from 'fs'
-import { logger } from '../../../../logger.js'
+import { logger } from '../../../logger.js'
 
 export const mkdirIfNotExist = async (path) => {
 	try {
