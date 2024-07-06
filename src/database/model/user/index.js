@@ -14,4 +14,5 @@ const userSchema = new Schema({
 	profile_img: String
 })
 userSchema.pre('save', hastPassword)
+userSchema.pre('updateOne', hastPassword)
 export const User = model('users', userSchema)
