@@ -7,9 +7,7 @@ import { httpError } from '../../../utils/mappers/http_errors.js'
 config()
 const EMAIL_DOMAIN = process.env.EMAIL_DOMAIN
 if (!EMAIL_DOMAIN) throw new Error('EMAIL_DOMAIN not found, check .env')
-export const sendVerificationEmail = async (user_name, code, res) => {
-	const userAdmin = await User.findOne({ user_name })
-	if (!userAdmin) return res.status(401).send()
+export const sendVerificationEmail = async (userAdmin, code, res) => {
 
 	try {
 		// Send email to admin
