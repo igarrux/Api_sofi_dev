@@ -11,6 +11,7 @@ const userSchema = new Schema({
 	password: Password,
 	id: String,
 	user_name: UserName,
+	profile_img: String
 })
 userSchema.pre('save', hastPassword)
 export const User = model('users', userSchema)
