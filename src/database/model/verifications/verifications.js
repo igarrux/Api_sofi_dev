@@ -5,12 +5,12 @@ const verificationSchema = new Schema({
 	verification: String,
 	user_name: {
 		required: true,
-		Type: String,
+		type: String,
 	},
 	createAt: {
 		type: Date,
 		default: Date.now,
-		expires: '20s',
+		expires: 660,
 	},
 })
 verificationSchema.pre('save', hashVerification)
