@@ -3,13 +3,16 @@ import { ERRORS } from './errors_messages/error.messages.js'
 import { dbHttpError } from '../../utils/mappers/db_http_errors.mapper.js'
 import { httpError } from '../../utils/mappers/http_errors.js'
 import { logger } from '../../../logger.js'
+import { UploadPromise } from '../utils/multer/upload_prommise.js'
+import multer from 'multer'
 
 export const SingUp = async (req, res) => {
 	if (!req.body) return res.status(400).send(ERRORS.BODY_EMPTY)
-	const user = new User(req.body)
-
 	try {
+		const { body } = await UploadPromise('profile_img', req, res)
+		const user = new User(body)
 		await user.save()
+		req.saveIMG()
 	} catch (error) {
 		const { code, name, keyPattern, errors } = error
 		//Duplicated errors
