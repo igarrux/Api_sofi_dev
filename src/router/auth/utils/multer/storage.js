@@ -24,9 +24,11 @@ const filename = (req, file, cb) => {
 		// Add the name of the image in the database
 		req.body.profile_img = FILE_NAME
 
-		req.saveIMG = () => {
+		req.saveIMG = async () => {
 			//Remove prev images
+			await mkdirIfNotExist('public/profiles/')
 			deleteSync(`public/profiles${userName}.*`)
+
 			fs.renameSync(
 				`temp/profiles/${FILE_NAME}`,
 				`public/profiles/${FILE_NAME}`
