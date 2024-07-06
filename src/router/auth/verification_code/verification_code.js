@@ -7,6 +7,8 @@ import { logger } from '../../../logger.js'
 export const verificationCode = async (req, res) => {
 	try {
 		const { user_name } = req.params
+		const userAdmin = await User.findOne({ user_name })
+		if (!userAdmin) return httpError(401, ERRORS.VERIFICATION_INVALID)(res)
 		const code = nanoid(8)
 		if (!user_name) httpError(400, ERRORS.USER_NAME_EMPTY, 'body/user_name')
 		const verification = new Verifications({
@@ -15,7 +17,7 @@ export const verificationCode = async (req, res) => {
 		})
 		await Verifications.deleteMany({ user_name })
 		await verification.save()
-		await sendVerificationEmail(user_name, code, res)
+		await sendVerificationEmail(userAdmin, code, res)
 		res.status(200).send()
 	} catch (error) {
 		httpError(500, ERRORS.INTERNAL_ERROR, 'http/verification_code')(res)
