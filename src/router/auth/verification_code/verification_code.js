@@ -4,6 +4,7 @@ import { ERRORS } from './messages/errors.js'
 import { nanoid } from 'nanoid'
 import { sendVerificationEmail } from './utils/send_verification_email.js'
 import { logger } from '../../../logger.js'
+import { User } from '../../../database/index.js'
 export const verificationCode = async (req, res) => {
 	try {
 		const { user_name } = req.params
