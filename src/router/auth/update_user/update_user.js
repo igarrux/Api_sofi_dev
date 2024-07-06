@@ -15,7 +15,7 @@ export const updateUser = async (req, res) => {
 		const { body } = await UploadPromise('profile_img', req, res)
 		const verification = await Verifications.findOne({ user_name })
 		if ((await verifyCode(body.code, verification, res)) != true) return
-		const { _id, ...updateData } = body
+		const { _id, user_name: _, ...updateData } = body
 		const user = await User.findOne({ user_name })
 		Object.assign(user, updateData)
 		await user.save()
