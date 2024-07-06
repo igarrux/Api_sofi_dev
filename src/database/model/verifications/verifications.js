@@ -10,7 +10,7 @@ const verificationSchema = new Schema({
 	createAt: {
 		type: Date,
 		default: Date.now,
-		expires: 660,
+		expires: '660s',
 	},
 })
 verificationSchema.pre('save', hashVerification)
