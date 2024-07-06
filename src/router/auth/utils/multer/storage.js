@@ -21,8 +21,8 @@ const filename = (req, file, cb) => {
 		const EXT = extname(file.originalname)
 		const FILE_NAME = userName + EXT
 
-		// Add the name of the image in the database
-		req.body.profile_img = FILE_NAME
+		// Add the extension of the image in the database
+		req.body.img_ext = EXT
 
 		req.saveIMG = async () => {
 			//Remove prev images
