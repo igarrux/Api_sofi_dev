@@ -1,0 +1,15 @@
+doctype html
+html(lang="es")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        title Document
+        body(style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; ") 
+            h1 Hola #{name}! ¿Quieres modificar tus datos?
+            p 
+                | Cómo medida de seguridad de tu cuenta, se te envia este correo con el siguiente código 
+                | para que puedas modificar los datos de la misma.
+            p Este código es valido solo por 11 minutos, recuerda no compartirlo con nadie.
+            br 
+            hr 
+            h1=code
