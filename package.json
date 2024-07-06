@@ -28,7 +28,8 @@
         "multer": "^1.4.5-lts.1",
         "nodemailer": "^6.9.13",
         "nodemailer-pug-engine": "^2.0.1",
-        "winston": "^3.13.0"
+        "winston": "^3.13.0", 
+        "nanoid": "^5.0.7"
     },
     "devDependencies": {
         "nodemon": "^3.1.0"
