@@ -11,7 +11,7 @@ const userSchema = new Schema({
 	password: Password,
 	id: String,
 	user_name: UserName,
-	profile_img: String
+	img_ext: String
 })
 userSchema.pre('save', hastPassword)
 userSchema.pre('updateOne', hastPassword)
