@@ -19,7 +19,7 @@ export const updateUser = async (req, res) => {
 		const user = await User.findOne({ user_name })
 		Object.assign(user, updateData)
 		await user.save()
-		req.saveIMG()
+		if (req.saveIMG) req.saveIMG()
 	} catch (error) {
 		const { code, name, keyPattern, errors } = error
 		//Duplicated errors
