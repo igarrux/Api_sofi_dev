@@ -4,4 +4,5 @@ export const cookieConfig = {
 	secure: isCookieSecure,
 	sameSite: 'none',
 	signed: true,
+	maxAge: 1000 * 60 * 60 * 24 * 90,
 }
