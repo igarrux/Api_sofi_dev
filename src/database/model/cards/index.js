@@ -1,4 +1,4 @@
-import { model, Schema, ObjectId  } from 'mongoose'
+import { model, Schema, ObjectId } from 'mongoose'
 import { Thumbnail } from './type_definitions/thumbnail.js'
 
 const cardSchema = new Schema({
@@ -8,6 +8,7 @@ const cardSchema = new Schema({
 	repository_link: String,
 	demo_link: String,
 	owner: ObjectId,
+	skills: [String],
 	id: String,
 })
 export const Card = model('cards', cardSchema)
