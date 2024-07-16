@@ -4,5 +4,5 @@ export const cookieConfig = {
 	secure: isCookieSecure,
 	sameSite: 'flex',
 	signed: true,
-	maxAge: 1000 * 60 * 60 * 24 * 90,
+	maxAge: 1000 * 60 * 60 * 24 * 60,
 }
