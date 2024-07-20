@@ -5,7 +5,7 @@ config()
 export const guard = (req, res, next) => {
 	try {
 		const session = req?.signedCookies?.session
-		const headerToken = req.headres['authorization']?.split(' ')
+		const headerToken = req.headers?.['authorization']?.split(' ')[1]
 		const authorization = session || headerToken
 		if (!authorization) res.status(401).send()
 		const auth = jwt.verify(authorization, process.env.JWT_SECRET)
