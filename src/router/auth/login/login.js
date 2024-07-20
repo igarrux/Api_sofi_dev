@@ -10,6 +10,7 @@ export const Login = async (req, res) => {
 
 		const jwt = getJWT(userId)
 		res.cookie('session', jwt, cookieConfig)
+		res.setHeader("token", jwt)
 		res.status(204).send()
 	} catch (error) {
 		res.status(500).send()
