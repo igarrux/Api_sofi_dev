@@ -11,7 +11,10 @@ const userSchema = new Schema({
 	password: Password,
 	id: String,
 	user_name: UserName,
-	img_ext: String
+	img_ext: {
+		type: String,
+		default: ".png"
+	}
 })
 userSchema.pre('save', hastPassword)
 userSchema.pre('updateOne', hastPassword)
