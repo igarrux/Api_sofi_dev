@@ -1,9 +1,7 @@
 import { User } from '../../../database/index.js'
 import { ERRORS } from './errors_messages/error.messages.js'
-import { dbHttpError } from '../../utils/mappers/db_http_errors.mapper.js'
-import { httpError } from '../../utils/mappers/http_errors.js'
-import { logger } from '../../../logger.js'
 import { UploadPromise } from '../utils/multer/upload_prommise.js'
+import { saveUpdateErrorHandler } from '../utils/save_update_error_handler/save_update_error_handler.js'
 
 export const SingUp = async (req, res) => {
 	if (!req.body) return res.status(400).send(ERRORS.BODY_EMPTY)
@@ -13,21 +11,7 @@ export const SingUp = async (req, res) => {
 		await user.save()
 		if (req.saveIMG) req.saveIMG()
 	} catch (error) {
-		const { code, name, keyPattern, errors } = error
-		//Duplicated errors
-		if (code === 11000 && keyPattern.email) {
-			return httpError(409, ERRORS.EMAIL_DIPLICATED, 'email')(res)
-		}
-		if (code === 11000 && keyPattern.user_name) {
-			return httpError(409, ERRORS.USER_NAME_DUPLICATED, 'user_name')(res)
-		}
-		if (name === 'ValidationError') return dbHttpError(errors, 400)(res)
-
-		if (name != 'ValidationError' && code != 11000) {
-			res.status(500).send(ERRORS.INTERVAL_ERROR)
-		}
-		logger.Error(error)
-		return
+		saveUpdateErrorHandler(error, res)
 	}
 	res.status(201).send()
 }
