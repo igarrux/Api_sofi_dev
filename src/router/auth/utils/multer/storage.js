@@ -16,7 +16,9 @@ const destination = async (req, _, cb) => {
 
 const filename = (req, file, cb) => {
 	try {
-		const userName = req.body.user_name
+		let userName = ''
+		if (req.method == 'POST') userName = req.body.user_name
+		if (req.method == 'PATCH') userName = req.params.user_name
 		//Get the name
 		const EXT = extname(file.originalname)
 		const FILE_NAME = userName + EXT
