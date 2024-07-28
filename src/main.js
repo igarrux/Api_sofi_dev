@@ -21,6 +21,7 @@ app.use(
 	cors({
 		credentials: true,
 		origin: process.env.CORS_ORIGIN.split(','),
+		exposedHeaders: 'token',
 	})
 )
 app.use(express.json())
