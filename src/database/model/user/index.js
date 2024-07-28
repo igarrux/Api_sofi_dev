@@ -13,7 +13,7 @@ const userSchema = new Schema({
 	user_name: UserName,
 	img_ext: {
 		type: String,
-		default: ".png"
+		default: "none"
 	}
 })
 userSchema.pre('save', hastPassword)
