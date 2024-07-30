@@ -21,7 +21,7 @@ const filename = (req, file, cb) => {
 		if (req.method == 'PATCH') userName = req.params.user_name
 		//Get the name
 		const EXT = extname(file.originalname).replace('.', '')
-		const FILE_NAME = userName + EXT
+		const FILE_NAME = userName + '.' + EXT
 
 		// Add the extension of the image in the database
 		req.body.img_ext = EXT
