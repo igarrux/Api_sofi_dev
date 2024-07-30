@@ -3,6 +3,8 @@ export const userDataMapper = (userDBData) => ({
 	email: userDBData.email,
 	name: userDBData.name,
 	user_name: userDBData.user_name,
-	profile_img: `/profiles/${userDBData.user_name}.${userDBData.img_ext}?time=${userDBData.updatedAt}`,
+	profile_img: `/profiles/${userDBData.user_name}.${
+		userDBData.img_ext
+	}?time=${new Date(userDBData.updatedAt)}`,
 	updatedAt: userDBData.updatedAt,
 })
