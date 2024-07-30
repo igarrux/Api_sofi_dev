@@ -5,6 +5,6 @@ export const userDataMapper = (userDBData) => ({
 	user_name: userDBData.user_name,
 	profile_img: `/profiles/${userDBData.user_name}.${
 		userDBData.img_ext
-	}?time=${new Date(userDBData.updatedAt)}`,
+	}?time=${new Date(userDBData.updatedAt).getTime()}`,
 	updatedAt: userDBData.updatedAt,
 })
