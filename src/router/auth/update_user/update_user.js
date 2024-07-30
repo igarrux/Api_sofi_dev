@@ -15,7 +15,7 @@ export const updateUser = async (req, res) => {
 		//Update the user
 		const user = await User.findOne({ user_name })
 		updateData(user, updateDataMapper(body))
-		user.updatedAt = Date().now()
+		user.updatedAt = Date.now()
 		await user.save()
 		if (req.saveIMG) req.saveIMG()
 	} catch (error) {
