@@ -1,4 +1,4 @@
 export const updateDataMapper = (newData) => ({
 	name: newData.name,
-	profile_img: newData.profile_img,
+	img_ext: newData.img_ext,
 })
