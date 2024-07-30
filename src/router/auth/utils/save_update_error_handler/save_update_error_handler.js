@@ -1,6 +1,7 @@
 import { ERRORS } from './messages/error.messages.js'
 import { httpError } from '../../../utils/mappers/http_errors.js'
 import { dbHttpError } from '../../../utils/mappers/db_http_errors.mapper.js'
+import { logger } from '../../../../logger.js'
 export const saveUpdateErrorHandler = (error, res) => {
 	const { code, name, keyPattern, errors } = error
 	if (code === 11000 && keyPattern.email) {
@@ -14,5 +15,5 @@ export const saveUpdateErrorHandler = (error, res) => {
 	if (name != 'ValidationError' && code != 11000) {
 		res.status(500).send(ERRORS.INTERNAL_ERROR)
 	}
-	logger.Error(error)
+	logger.Error("save-update",error)
 }
