@@ -13,8 +13,8 @@
         "email": "garruxx@gmail.com"
     },
     "scripts": {
-        "dev": "nodemon src/main.mjs",
-        "start": "node src/main.mjs"
+        "dev": "nodemon src/main.js",
+        "start": "node src/main.js"
     },
     "license": "MIT",
     "dependencies": {
