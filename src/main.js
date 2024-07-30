@@ -5,6 +5,7 @@ import router from './router/router.js'
 import cookieParser from 'cookie-parser'
 import { errorHandler } from './middlewares/error_handler/errors_handler.js'
 import cors from 'cors'
+import { multerErrorHandler } from './router/utils/multer/error_handler.js'
 const app = express()
 const port = process.env.PORT || 3000
 config()
@@ -26,6 +27,7 @@ app.use(
 )
 app.use(express.json())
 app.use(cookieParser(process.env.COOKIE_SECRET))
+app.use(multerErrorHandler)
 app.use('/', router)
 app.use(express.static('public'))
 app.use(errorHandler)
