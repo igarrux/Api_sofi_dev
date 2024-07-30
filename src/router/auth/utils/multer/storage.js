@@ -29,7 +29,7 @@ const filename = (req, file, cb) => {
 		req.saveIMG = async () => {
 			//Remove prev images
 			await mkdirIfNotExist('public/profiles/')
-			deleteSync(`public/profiles${userName}.*`)
+			deleteSync(`public/profiles/${userName}.*`)
 
 			fs.renameSync(
 				`temp/profiles/${FILE_NAME}`,
