@@ -5,7 +5,7 @@ import { httpError } from '../../utils/mappers/http_errors.js'
 import { ERRORS } from '../../../messages/errors.js'
 
 export const getCards = async (req, res) => {
-	const { id } = req.params
+	const id = req.params.id || req.user_id
 	try {
 		if (!isValidObjectId(id)) {
 			return httpError(400, ERRORS.INVALID_OBJECT_ID, 'objectID')(res)
